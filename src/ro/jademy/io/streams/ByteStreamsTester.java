@@ -1,4 +1,4 @@
-package ro.jademy.io;
+package ro.jademy.io.streams;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -6,17 +6,17 @@ import java.io.IOException;
 
 public class ByteStreamsTester {
 
+    private static final String INPUT_FILE_NAME = "resources/contacts.csv";
+
     public static void main(String[] args) {
 
-        String fileName = "resources/contacts.csv";
-
-        readContents(fileName);
+        readContents(INPUT_FILE_NAME);
 
         System.out.println("\n");
-        readContentsFinallyBlock(fileName);
+        readContentsFinallyBlock(INPUT_FILE_NAME);
 
         System.out.println("\n");
-        readContentsTryWithResources(fileName);
+        readContentsTryWithResources(INPUT_FILE_NAME);
 
     }
 
@@ -78,7 +78,7 @@ public class ByteStreamsTester {
 
         // if the in.close() method called by the tr-with-resources statement throws an exception, that exception is
         // suppressed
-        try (FileInputStream in = new FileInputStream(fileName)){
+        try (FileInputStream in = new FileInputStream(fileName)) {
             int character;
             while ((character = in.read()) != -1) {
                 System.out.print((char) character);

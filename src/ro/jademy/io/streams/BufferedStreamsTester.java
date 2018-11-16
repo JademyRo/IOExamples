@@ -1,4 +1,4 @@
-package ro.jademy.io;
+package ro.jademy.io.streams;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -7,14 +7,14 @@ import java.util.stream.Collectors;
 
 public class BufferedStreamsTester {
 
+    private static final String INPUT_FILE_NAME = "resources/contacts.csv";
+    private static final String OUTPUT_FILE_NAME = "resources/contacts_sorted.csv";
+
     public static void main(String[] args) {
 
-        String inputFileName = "resources/contacts.csv";
-        String outputFileName = "resources/contacts_sorted.csv";
+        List<String> lines = getContentsTryWithResources(INPUT_FILE_NAME);
 
-        List<String> lines = getContentsTryWithResources(inputFileName);
-
-        writeContentsSorted(lines, outputFileName);
+        writeContentsSorted(lines, OUTPUT_FILE_NAME);
     }
 
     private static List<String> getContentsTryWithResources(String fileName) {
